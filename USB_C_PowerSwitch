@@ -1,0 +1,12 @@
+Notice
+After starting the RPi5 with the official Raspberry Pi 27W power supply through this switch line, the system will not recognize the power supply correctly.USB booting may be affected as a result, and the current consumption of USB peripherals will be limited to 600mA. 
+The solution is:
+sudo nano /boot/firmware/config.txt
+to add
+usb_max_current_enable=1
+
+
+In addition, the screen warns: "This power supply is not capable of supplying 5A Power to peripherals will be restricted", which can be solved by the following methods:
+sudo rpi-eeprom-config --edit
+to add
+PSU_MAX_CURRENT=5000
